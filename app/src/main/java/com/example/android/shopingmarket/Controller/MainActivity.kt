@@ -18,16 +18,16 @@ import com.example.android.shopingmarket.Utilties.EXTRA_PRODUCTS
 class MainActivity : AppCompatActivity() {
 
     lateinit var adapter : CategoryRecycleAdapter
-    var product = Products("","","")
+//    var product = Products("","","")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        adapter = CategoryRecycleAdapter(this, DataService.categories ) { category ->
+        adapter = CategoryRecycleAdapter(this, DataService.categories ) { Products ->
             val productIntent = Intent(this,ProductsActivity::class.java)
-            product.title = category.title
-            productIntent.putExtra(EXTRA_PRODUCTS,product)
+//            product.title = category.title
+            productIntent.putExtra(EXTRA_PRODUCTS,Products)
             startActivity(productIntent)
         }
         val lv : RecyclerView = findViewById(R.id.categoryListView)

@@ -1,6 +1,5 @@
 package com.example.android.shopingmarket.Adapters
 
-import android.content.ClipData
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -11,10 +10,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.android.shopingmarket.Models.Products
 import com.example.android.shopingmarket.R
 
-class ProductsAdapter(val context : Context,val products : List<Products> , val itemClick : (Products) -> Unit ) : RecyclerView.Adapter<ProductsAdapter.ProductHolder>() {
+class ProductDescriptionAdapter(val context : Context, val products : List<Products>) : RecyclerView.Adapter<ProductDescriptionAdapter.ProductHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.product_list_item,parent,false)
+        val view = LayoutInflater.from(context).inflate(R.layout.activity_product_description,parent,false)
         return ProductHolder(view)
     }
 
@@ -27,17 +26,16 @@ class ProductsAdapter(val context : Context,val products : List<Products> , val 
     }
 
     inner class ProductHolder(itemView: View?) : RecyclerView.ViewHolder(itemView!!){
-        val productImage = itemView?.findViewById<ImageView>(R.id.productImage)
-        val productName = itemView?.findViewById<TextView>(R.id.productName)
-        val productPrice = itemView?.findViewById<TextView>(R.id.productPrice)
 
+        val productImage = itemView?.findViewById<ImageView>(R.id.productImage2)
+        val productName = itemView?.findViewById<TextView>(R.id.productName2)
+        val productPrice = itemView?.findViewById<TextView>(R.id.productPrice2)
 
         fun bindProduct(product : Products,context: Context ){
             val resourceId = context.resources.getIdentifier(product.image , "drawable" , context.packageName)
             productImage?.setImageResource(resourceId)
             productName?.text = product.title
             productPrice?.text = product.price
-            itemView.setOnClickListener { itemClick(product) }
         }
     }
 
